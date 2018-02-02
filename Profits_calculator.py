@@ -2,7 +2,7 @@
 import csv
 
 # Pair(s) to process
-PAIR = "SUBBTC"
+PAIR = "XRPBTC"
 
 # csv file name
 filename = "TradeHistory.csv"
@@ -26,6 +26,8 @@ with open(filename, 'r') as csvfile:
     for row in csvreader:
         rows.append(row)
 
+
+
 buys = 0
 sells = 0
 qty = 0.0;
@@ -33,23 +35,19 @@ totalSpent = 0.0;
 buys = 0;
 sells = 0;
 totalSpent = 0.0;
-
-
+    
 for row in reversed(rows[:]):
-
     if PAIR in row and "BUY" in row:
         qty += float(row[4])
         totalSpent += float(row[5])
         buys += 1
-                
-        #print("-%s\n"%row, end="")
+
+        #print(row)
     if PAIR in row and "SELL" in row:
         qty -= float(row[4])
         totalSpent -= float(row[5])
         sells += 1
-        
-        #print("+%s\n"%row, end="")
-        
+
 average = totalSpent/qty;
 print("\n")
 print("TotalSpent: {} BTC\nbuys: {}\nsells: {}\nqty: {}\naverage: {}".format(totalSpent, buys, sells, qty, round(average,8)))
