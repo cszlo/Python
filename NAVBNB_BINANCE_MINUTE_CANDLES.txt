@@ -1,1 +1,0 @@
-{'code': -1100, 'msg': "Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9_]{1,20}$'."}
